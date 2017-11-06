@@ -12,13 +12,5 @@ int main() {
 	d.input();
 	cout <<endl<<"DFA INITIALISED.\nReady to accept words.\n";
 	d.output();
-	cout << "Enter the word to be accepted\n(Enter exit to exit): ";
-	string word; cin >> word;
-	while ((word.compare("exit") != 0)){
-		if (d.accept(word))
-			cout << "Word has been ACCEPTED: "<< word <<endl;
-		else
-			cout << "Word has NOT been ACCEPTED: "<< word <<endl;
-		cin >> word;
-	}
+	d.accepter();
 }

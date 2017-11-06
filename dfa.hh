@@ -23,6 +23,7 @@ class DFA {
 		// Transition function is a mapping
 		// Current State, Character Read -> Next State
 		map <int, map <char, int> > del;
+
 		DFA(size_t numS, string charS) {
 			numStates = numS;
 			for (auto&& character : charS) {
@@ -53,7 +54,7 @@ class DFA {
 			}
 		}
 		void output() {
-			cout << "Initial State of DFA: "<<initialState;
+			cout << "\nInitial State of DFA: "<<initialState;
 			cout << "\nSet of final States of DFA: {";
 			for (auto&& finalstate : finalStates) {
 				cout << finalstate <<", ";
@@ -76,15 +77,26 @@ class DFA {
 		}
 		bool accept(string word) {
 			int curState = initialState;
-			for (auto&& symbol : word) {
+			for (auto&& symbol : word)
 				curState = nextState(curState, symbol);
-			}
-			if (finalStates.find(curState) != finalStates.end())
+
+			if (finalStates.count(curState) > 0)
 				return true;
 			else
 				return false;
 		}
 		int nextState(int current, char symbol) {
 			return del[current][symbol];
+		}
+		void accepter() {
+			cout << "Enter the word to be accepted\n(Enter exit to exit): ";
+			string word; cin >> word;
+			while ((word.compare("exit") != 0)){
+				if (accept(word))
+					cout << "Word has been ACCEPTED: "<< word <<endl;
+				else
+					cout << "Word has NOT been ACCEPTED: "<< word <<endl;
+				cin >> word;
+			}
 		}
 };

@@ -3,7 +3,7 @@
 %.cc.out: %.cc
 	g++ --std=c++11 -g -o $@ $<
 %.c.out: %.c
-	gcc -g -o $@ $< -lrt -lreadline
+	gcc -g -o $@ $< -lrt -lreadline -pthread
 clean:
 	rm -rf *.out
 %.py.out: %.py
