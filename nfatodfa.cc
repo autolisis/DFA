@@ -15,7 +15,7 @@ int main() {
 	DFA b(1<<n, charSet);//Initialise a DFA with 2^n states and same character Set
 	set < set <int> > possibleStates;
 	int init[] = {a.initialState};
-	b.initialState = 1<<a.initialState;
+	b.initialState = 1 << a.initialState;
 	possibleStates.insert(set <int>(init, init+1));
 	bool hasPhi = false;
 	for (auto&& currentState : possibleStates) {
@@ -43,6 +43,5 @@ int main() {
 			b.del[0][symbol] = 0;
 
 	b.output();
-	b.accepter();
 	cout << "Process ended";
 }
